@@ -7,8 +7,8 @@ import RegularMovieCard from "./RegularMovieCard";
 function SearchResults({ dispatch, searchForm, searchedData }) {
   console.log(searchedData);
   return (
-    <div className="md:flex md:flex-row relative  gap-10">
-      <div className=" md:pl-8 md:w-[90%] md:right-0 md:absolute">
+    <div className="md:flex md:flex-row relative  gap-10 ">
+      <div className=" md:pl-8 md:w-[90%] ">
         <MoviesListBlock
           heading={`Found ${
             searchedData.length && searchedData.length

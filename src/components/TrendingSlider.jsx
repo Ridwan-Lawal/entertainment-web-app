@@ -18,7 +18,7 @@ import TrendingMovieCard from "./TrendingMovieCard";
 import MovieCard from "./MovieCard";
 import MovieOverlay from "./MovieOverlay";
 
-export default function TrendingSlider({ videosData }) {
+export default function TrendingSlider({ videosData, dispatch }) {
   return (
     <div className="mt-6">
       <h1 className="font-poppins text-white  text-[22px]  sm:text-[27px] mb-6">
@@ -78,6 +78,8 @@ export default function TrendingSlider({ videosData }) {
                 movieDetailFont="text-[12px] md:text-base font-medium"
                 movieNameFont="text-base md:text-2xl font-semibold"
                 video={video}
+                videosData={videosData}
+                dispatch={dispatch}
               >
                 <MovieOverlay playMargin="-mt-8" />
               </MovieCard>

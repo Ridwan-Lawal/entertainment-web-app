@@ -1,18 +1,23 @@
 /* eslint-disable react/prop-types */
+
 function SearchForm({
   dispatch,
+  formSelect,
   searchForm,
   placeholder = "Search for movies or TV series",
 }) {
   return (
-    <form className="w-full  flex items-center gap-6 mt-10 ">
+    <form className="w-full  flex items-center gap-6 mt-10 md:mb-8 ">
       <img
         src="/src/assets/icon-search.svg"
         alt=""
         className="w-[28px] sm:w-fit"
       />
 
-      <div className="w-full border-b border-slate-600 pb-1.5">
+      <div
+        ref={formSelect}
+        className="form-input w-full  border-slate-800 pb-1.5"
+      >
         <input
           type="text"
           value={searchForm}

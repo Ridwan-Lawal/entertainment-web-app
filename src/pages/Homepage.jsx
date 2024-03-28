@@ -8,15 +8,25 @@ import MovieCard from "../components/MovieCard";
 import MovieOverlay from "../components/MovieOverlay";
 import SearchResults from "../components/SearchResults";
 
-function Homepage({ videosData, dispatch, searchForm, searchedData }) {
+function Homepage({
+  videosData,
+  dispatch,
+  searchForm,
+  searchedData,
+  formSelect,
+}) {
   console.log(searchedData);
   return (
-    <div className="md:flex md:flex-row relative  gap-10">
-      <div className="md:fixed">
+    <div className="md:flex md:flex-row  relative  gap-10">
+      <div className="md:fixed ">
         <NavBar videosData={videosData} />
       </div>
       <div className=" md:pl-8 md:w-[90%] md:right-0 md:absolute">
-        <SearchForm searchForm={searchForm} dispatch={dispatch} />
+        <SearchForm
+          searchForm={searchForm}
+          dispatch={dispatch}
+          formSelect={formSelect}
+        />
 
         {searchForm ? (
           <SearchResults
@@ -27,7 +37,7 @@ function Homepage({ videosData, dispatch, searchForm, searchedData }) {
           />
         ) : (
           <>
-            <TrendingSlider videosData={videosData} />
+            <TrendingSlider videosData={videosData} dispatch={dispatch} />
             <MoviesListBlock heading="Recommended for you">
               {videosData.map((video) => (
                 <RegularMovieCard key={video.id}>

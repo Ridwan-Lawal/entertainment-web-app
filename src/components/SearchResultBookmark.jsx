@@ -4,24 +4,19 @@ import MoviesListBlock from "./MoviesListBlock";
 
 import RegularMovieCard from "./RegularMovieCard";
 
-function SearchResultCategory({
-  dispatch,
-  searchForm,
-  searchedData,
-  category = "Movie",
-}) {
+function SearchResultBookmark({ dispatch, searchForm, searchedData }) {
   console.log(searchedData);
   return (
-    <div className="md:flex md:flex-row relative  gap-10">
+    <div className="md:flex md:flex-row relative  gap-10 ">
       <div className=" md:pl-8 md:w-[90%] ">
         <MoviesListBlock
           heading={`Found ${
-            searchedData.filter((video) => video.category === category).length
+            searchedData?.filter((video) => video.isBookmarked).length
           } results for "${searchForm}"`}
         >
           {searchedData?.map(
             (video) =>
-              video.category === category && (
+              video.isBookmarked && (
                 <RegularMovieCard key={video.id}>
                   <MovieCard
                     dispatch={dispatch}
@@ -41,4 +36,4 @@ function SearchResultCategory({
   );
 }
 
-export default SearchResultCategory;
+export default SearchResultBookmark;

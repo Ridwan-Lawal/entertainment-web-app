@@ -14,7 +14,6 @@ function MovieCard({
   dispatch,
   children,
 }) {
-  console.log(`/src${video?.thumbnail?.regular?.large.slice(1)}`);
   return (
     <>
       {/* bookmark logo */}

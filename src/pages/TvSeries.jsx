@@ -6,7 +6,13 @@ import RegularMovieCard from "../components/RegularMovieCard";
 import SearchForm from "../components/SearchForm";
 import SearchResultCategory from "../components/SearchResultCategory";
 
-function TvSeries({ videosData, dispatch, searchForm, searchedData }) {
+function TvSeries({
+  videosData,
+  dispatch,
+  searchForm,
+  searchedData,
+  formSelect,
+}) {
   return (
     <div className="md:flex md:flex-row relative  gap-10">
       <div className="md:fixed">
@@ -17,6 +23,7 @@ function TvSeries({ videosData, dispatch, searchForm, searchedData }) {
           dispatch={dispatch}
           searchForm={searchForm}
           placeholder="Search for TV series"
+          formSelect={formSelect}
         />
 
         {searchForm ? (

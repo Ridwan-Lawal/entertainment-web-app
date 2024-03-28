@@ -1,17 +1,16 @@
-import { Grid } from "react-s";
+import { Triangle } from "react-loader-spinner";
 
 function Loader() {
   return (
-    <div>
-      <Grid
+    <div className="h-screen flex justify-center items-center">
+      <Triangle
         visible={true}
         height="80"
         width="80"
-        color="#4fa94d"
-        ariaLabel="grid-loading"
-        radius="12.5"
+        color="#2d22b5"
+        ariaLabel="triangle-loading"
         wrapperStyle={{}}
-        wrapperClass="grid-wrapper"
+        wrapperClass=""
       />
     </div>
   );

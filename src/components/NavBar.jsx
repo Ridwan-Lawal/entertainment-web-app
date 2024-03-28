@@ -16,7 +16,7 @@ function NavBar({ videosData }) {
   console.log(bookmarkedVideos);
 
   return (
-    <nav className="bg-slate-900 flex items-center justify-between md:py-8 md:px-6 px-4 rounded-2xl py-2 md:flex-col  md:fixed   md:h-screen md:buttom-0 z-10">
+    <nav className="bg-slate-900 flex items-center justify-between md:py-8 md:px-6 px-4 rounded-2xl py-2 md:flex-col  md:fixed   md:h-[90vh] md:mt-5 md:buttom-0 z-10">
       <Logo />
 
       <ul className="flex items-center gap-10 md:flex-col ">

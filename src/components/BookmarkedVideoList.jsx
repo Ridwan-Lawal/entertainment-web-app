@@ -5,7 +5,7 @@ import RegularMovieCard from "./RegularMovieCard";
 
 function BookmarkedVideoList({ videosData, dispatch, category = "Movie" }) {
   return (
-    <MoviesListBlock heading="Bookmarked Movies">
+    <MoviesListBlock heading={`Bookmarked ${category}`}>
       {videosData?.map(
         (video) =>
           video.isBookmarked &&

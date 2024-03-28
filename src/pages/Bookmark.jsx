@@ -1,13 +1,16 @@
 /* eslint-disable react/prop-types */
 import BookmarkedVideoList from "../components/BookmarkedVideoList";
-import MovieCard from "../components/MovieCard";
-import MoviesListBlock from "../components/MoviesListBlock";
 import NavBar from "../components/NavBar";
-import RegularMovieCard from "../components/RegularMovieCard";
 import SearchForm from "../components/SearchForm";
-import SearchResults from "../components/SearchResults";
+import SearchResultBookmark from "../components/SearchResultBookmark";
 
-function Bookmark({ videosData, dispatch, searchForm, searchedData }) {
+function Bookmark({
+  videosData,
+  dispatch,
+  searchForm,
+  searchedData,
+  formSelect,
+}) {
   return (
     <div className="md:flex md:flex-row relative  gap-10">
       <div className="md:fixed">
@@ -18,10 +21,11 @@ function Bookmark({ videosData, dispatch, searchForm, searchedData }) {
           placeholder="Search for bookmarked shows"
           searchForm={searchForm}
           dispatch={dispatch}
+          formSelect={formSelect}
         />
 
         {searchForm ? (
-          <SearchResults
+          <SearchResultBookmark
             searchForm={searchForm}
             searchedData={searchedData}
             dispatch={dispatch}
