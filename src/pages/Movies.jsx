@@ -5,33 +5,21 @@ import NavBar from "../components/NavBar";
 import RegularMovieCard from "../components/RegularMovieCard";
 import SearchForm from "../components/SearchForm";
 import SearchResultCategory from "../components/SearchResultCategory";
+import { useMovie } from "../contexts/MovieContext";
 
-function Movies({
-  videosData,
-  dispatch,
-  searchForm,
-  searchedData,
-  formSelect,
-}) {
+function Movies() {
+  const { videosData, dispatch, searchForm } = useMovie();
+
   return (
     <div className="md:flex md:flex-row relative  gap-10">
       <div className="md:fixed">
-        <NavBar videosData={videosData} />
+        <NavBar />
       </div>
       <div className=" md:pl-8 md:w-[90%] md:right-0 md:absolute">
-        <SearchForm
-          dispatch={dispatch}
-          searchForm={searchForm}
-          placeholder="Search for Movie"
-          formSelect={formSelect}
-        />
+        <SearchForm placeholder="Search for Movie" />
 
         {searchForm ? (
-          <SearchResultCategory
-            searchForm={searchForm}
-            searchedData={searchedData}
-            category="Movie"
-          />
+          <SearchResultCategory category="Movie" />
         ) : (
           <>
             <MoviesListBlock heading="Movies">

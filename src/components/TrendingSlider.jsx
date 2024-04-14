@@ -17,8 +17,11 @@ import "swiper/css/autoplay";
 import TrendingMovieCard from "./TrendingMovieCard";
 import MovieCard from "./MovieCard";
 import MovieOverlay from "./MovieOverlay";
+import { useMovie } from "../contexts/MovieContext";
 
-export default function TrendingSlider({ videosData, dispatch }) {
+export default function TrendingSlider() {
+  const { videosData, dispatch } = useMovie();
+
   return (
     <div className="mt-6">
       <h1 className="font-poppins text-white  text-[22px]  sm:text-[27px] mb-6">

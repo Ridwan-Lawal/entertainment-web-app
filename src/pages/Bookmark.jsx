@@ -3,48 +3,28 @@ import BookmarkedVideoList from "../components/BookmarkedVideoList";
 import NavBar from "../components/NavBar";
 import SearchForm from "../components/SearchForm";
 import SearchResultBookmark from "../components/SearchResultBookmark";
+import { useMovie } from "../contexts/MovieContext";
 
-function Bookmark({
-  videosData,
-  dispatch,
-  searchForm,
-  searchedData,
-  formSelect,
-}) {
+function Bookmark() {
+  const { searchForm } = useMovie();
+
   return (
     <div className="md:flex md:flex-row relative  gap-10">
       <div className="md:fixed">
-        <NavBar videosData={videosData} />
+        <NavBar />
       </div>
       <div className=" md:pl-8 md:w-[90%] md:right-0 md:absolute">
-        <SearchForm
-          placeholder="Search for bookmarked shows"
-          searchForm={searchForm}
-          dispatch={dispatch}
-          formSelect={formSelect}
-        />
+        <SearchForm placeholder="Search for bookmarked shows" />
 
         {searchForm ? (
-          <SearchResultBookmark
-            searchForm={searchForm}
-            searchedData={searchedData}
-            dispatch={dispatch}
-          />
+          <SearchResultBookmark />
         ) : (
           <>
             <div>
-              <BookmarkedVideoList
-                dispatch={dispatch}
-                videosData={videosData}
-                category="Movie"
-              />
+              <BookmarkedVideoList category="Movie" />
             </div>
             <div className="mt-10">
-              <BookmarkedVideoList
-                dispatch={dispatch}
-                videosData={videosData}
-                category="TV Series"
-              />
+              <BookmarkedVideoList category="TV Series" />
             </div>
           </>
         )}

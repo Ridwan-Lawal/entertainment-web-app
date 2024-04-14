@@ -5,15 +5,17 @@ import IconNavHome from "../assets/IconNavHome";
 import IconNavMovie from "../assets/IconNavMovie";
 import IconNavTvSeries from "../assets/IconNavTvSeries";
 import IconNavBookmark from "../assets/IconNavBookmark";
+import { useMovie } from "../contexts/MovieContext";
 
 // eslint-disable-next-line react/prop-types
-function NavBar({ videosData }) {
+function NavBar() {
+  const { videosData } = useMovie();
+
   const isNavLinkActive = (path) => {
     return window.location.pathname === path;
   };
 
   const bookmarkedVideos = videosData?.filter((video) => video.isBookmarked);
-  console.log(bookmarkedVideos);
 
   return (
     <nav className="bg-slate-900 flex items-center justify-between md:py-8 md:px-6 px-4 rounded-2xl py-2 md:flex-col  md:fixed   md:h-[90vh] md:mt-5 md:buttom-0 z-10">

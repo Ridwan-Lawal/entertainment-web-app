@@ -2,6 +2,7 @@
 import MovieDetails from "./MovieDetails";
 
 import MovieBookmarkLogo from "./MovieBookmarkLogo";
+import { useMovie } from "../contexts/MovieContext";
 
 // eslint-disable-next-line react/prop-types
 function MovieCard({
@@ -11,14 +12,16 @@ function MovieCard({
   bookmarkWidth,
   video,
   imageHeight,
-  dispatch,
   children,
 }) {
+  const { dispatch } = useMovie();
   return (
     <>
       {/* bookmark logo */}
       <MovieBookmarkLogo
-        onClick={() => dispatch({ type: "videoBookmarked", payload: video.id })}
+        onClick={() => {
+          dispatch({ type: "videoBookmarked", payload: video.id });
+        }}
       >
         {video?.isBookmarked ? (
           <img

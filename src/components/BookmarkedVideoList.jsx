@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
+import { useMovie } from "../contexts/MovieContext";
 import MovieCard from "./MovieCard";
 import MoviesListBlock from "./MoviesListBlock";
 import RegularMovieCard from "./RegularMovieCard";
 
-function BookmarkedVideoList({ videosData, dispatch, category = "Movie" }) {
+function BookmarkedVideoList({ category = "Movie" }) {
+  const { videosData, dispatch } = useMovie();
+
   return (
     <MoviesListBlock heading={`Bookmarked ${category}`}>
       {videosData?.map(

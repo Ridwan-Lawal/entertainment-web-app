@@ -1,16 +1,12 @@
 /* eslint-disable react/prop-types */
+import { useMovie } from "../contexts/MovieContext";
 import MovieCard from "./MovieCard";
 import MoviesListBlock from "./MoviesListBlock";
 
 import RegularMovieCard from "./RegularMovieCard";
 
-function SearchResultCategory({
-  dispatch,
-  searchForm,
-  searchedData,
-  category = "Movie",
-}) {
-  console.log(searchedData);
+function SearchResultCategory({ category = "Movie" }) {
+  const { dispatch, searchForm, searchedData } = useMovie();
   return (
     <div className="md:flex md:flex-row relative  gap-10">
       <div className=" md:pl-8 md:w-[90%] ">

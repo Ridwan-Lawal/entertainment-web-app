@@ -1,11 +1,9 @@
 /* eslint-disable react/prop-types */
 
-function SearchForm({
-  dispatch,
-  formSelect,
-  searchForm,
-  placeholder = "Search for movies or TV series",
-}) {
+import { useMovie } from "../contexts/MovieContext";
+
+function SearchForm({ placeholder = "Search for movies or TV series" }) {
+  const { dispatch, formSelect, searchForm } = useMovie();
   return (
     <form className="w-full  flex items-center gap-6 mt-10 md:mb-8 ">
       <img
