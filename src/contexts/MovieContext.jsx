@@ -4,6 +4,7 @@ import {
   createContext,
   useContext,
   useEffect,
+  useMemo,
   useReducer,
   useRef,
 } from "react";
@@ -12,7 +13,7 @@ import videos from "../local-data/data.json";
 
 const initialState = {
   errMessage: "",
-  videosData: JSON.parse(localStorage.getItem("videosData")) || videos,
+  videosData: videos,
   searchForm: "",
   searchedData: [],
 };
@@ -84,39 +85,38 @@ function MovieProvider({ children }) {
     return () => curTarget.removeEventListener("click", handleFormFocus);
   }, []);
 
+  // effect to store data to local storage
+  useEffect(
+    function () {
+      if (state === initialState) return;
+      localStorage.setItem("videosData", JSON.stringify(videosData));
+    },
+    [videosData, state]
+  );
+
   // effect to get data from local storage
 
   useEffect(function () {
     const videosFromStorage = JSON.parse(localStorage.getItem("videosData"));
 
-    console.log(videosFromStorage);
+    if (!videosFromStorage) return;
 
-    if (videosFromStorage) {
-      dispatch({ type: "videosFromStorage", payload: videosFromStorage });
-    }
+    dispatch({ type: "videosFromStorage", payload: videosFromStorage });
   }, []);
 
-  // effect to store data to local storage
-  useEffect(
-    function () {
-      localStorage.setItem("videosData", JSON.stringify(videosData));
-    },
-    [videosData]
-  );
+  const values = useMemo(() => {
+    return {
+      videosData,
+      searchedData,
+      searchForm,
+      appSelect,
+      formSelect,
+      dispatch,
+    };
+  }, [videosData, searchedData, searchForm, appSelect, formSelect, dispatch]);
 
   return (
-    <MovieContext.Provider
-      value={{
-        videosData,
-        searchedData,
-        searchForm,
-        appSelect,
-        formSelect,
-        dispatch,
-      }}
-    >
-      {children}
-    </MovieContext.Provider>
+    <MovieContext.Provider value={values}>{children}</MovieContext.Provider>
   );
 }
 
